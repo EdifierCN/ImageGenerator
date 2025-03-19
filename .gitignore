@@ -1,0 +1,17 @@
+# Python 相关
+__pycache__/
+*.pyc
+.venv/
+pip-log.txt
+
+# Node.js 相关
+node_modules/
+npm-debug.log*
+
+# 编辑器
+*.swp
+.DS_Store
+
+# 构建产物
+dist/
+build/
