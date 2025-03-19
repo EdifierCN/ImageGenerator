@@ -15,3 +15,5 @@ npm-debug.log*
 # 构建产物
 dist/
 build/
+
+.temp/
