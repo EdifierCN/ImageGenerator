@@ -1,16 +1,12 @@
-# -*- mode: python ; coding: utf-8 -*-
-
 
 a = Analysis(
     ['main.py'],
     pathex=[],
-    binaries=[],
     datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=['packaging', 'wx.lib.agw'],
     noarchive=False,
     optimize=2,
 )
@@ -19,9 +15,10 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
-    [],
-    exclude_binaries=True,
-    name='ImageGenerator',
+    a.binaries,  # 添加二进制文件
+    a.datas,      # 添加数据文件
+    exclude_binaries=False,  # 确保包含二进制
+    name='图片生成器',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

@@ -141,10 +141,10 @@ def create_custom_image(
     target_bytes = target_size
     required_padding = int(target_bytes - current_size)
 
-    if format_upper:
+    if format_upper == 'PNG':
         required_padding = required_padding - 28
 
-    print(f"图片尺寸：{img.size}，当前大小：{current_size}字节，需要填充：{required_padding}字节")
+    print(f"图片尺寸：{target_bytes}，当前大小：{current_size}字节，需要填充：{required_padding}字节")
 
     # 符合目标大小
     if required_padding == 0:
@@ -152,7 +152,7 @@ def create_custom_image(
         return
 
     # 7. 根据格式选择填充方式
-    if format_upper:
+    if format_upper == 'PNG':
         metadata = b'A' * required_padding
         pnginfo = PngImagePlugin.PngInfo()
         pnginfo.add_text("Custom_Metadata", metadata.decode(), zip=False)

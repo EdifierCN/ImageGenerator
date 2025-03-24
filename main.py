@@ -298,12 +298,12 @@ class ImageGeneratorUI(wx.Frame):
         # 处理目标大小的单位转换
         spin = self.params["目标大小"]["spin"]
         unit = self.params["目标大小"]["unit"].GetStringSelection()
-        target_size = math.ceil(spin.GetValue()) * {
+        target_size = math.ceil(spin.GetValue() * {
             "B": 1,
             "KB": 1024,
             "MB": 1024 ** 2,
             "GB": 1024 ** 3
-        }.get(unit, 1)
+        }.get(unit, 1))
 
         print(f"target_size:{target_size}")
 
