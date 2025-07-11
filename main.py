@@ -2,14 +2,13 @@ import math
 import os
 import platform
 import shutil
-from datetime import datetime  # 导入 datetime 模块
-
 import wx
 import wx.lib.colourselect as colourselect
 from PIL import Image
-
+from datetime import datetime
 from create_image import create_custom_image
 
+Image.MAX_IMAGE_PIXELS = None
 
 class ImageGeneratorUI(wx.Frame):
     def __init__(self, parent, title):
@@ -29,8 +28,8 @@ class ImageGeneratorUI(wx.Frame):
 
         # 基础设置
         self.add_param_group(input_sizer, "基础设置", [
-            ("宽度", wx.SpinCtrl, None, None, 1, 4096, 800),
-            ("高度", wx.SpinCtrl, None, None, 1, 4096, 800),
+            ("宽度", wx.SpinCtrl, None, None, 1, 999999999, 800),
+            ("高度", wx.SpinCtrl, None, None, 1, 999999999, 800),
             ("目标大小", [
                 wx.SpinCtrlDouble,
                 wx.Choice,
@@ -451,7 +450,8 @@ class ImageGeneratorUI(wx.Frame):
 
 
 if __name__ == "__main__":
-    app = wx.App()
+    app = wx.App(redirect=False)
+
     frame = ImageGeneratorUI(None, "图片生成器")
     frame.Show()
     app.MainLoop()
